@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taça Padre Cícero - Edição 2025</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .header {
+            background-color: #1a5276;
+            color: white;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .tab-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-right: 5px;
+            border-radius: 4px 4px 0 0;
+            cursor: pointer;
+        }
+        .tab-button.active {
+            background-color: #2980b9;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .tab-content.active {
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        .btn-success {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+        }
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
+        .btn-danger {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+        }
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: black;
+        }
+        .draggable {
+            cursor: move;
+        }
+        .highlight {
+            background-color: #f0ad4e;
+        }
+        input[type="text"], input[type="number"], input[type="password"], select, textarea {
+            width: 100%;
+            padding: 8px 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .alert {
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .team-logo {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .hidden {
+            display: none;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 7px;
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 10px;
+            color: #fff;
+        }
+        .badge-primary {
+            background-color: #3498db;
+        }
+        .badge-success {
+            background-color: #2ecc71;
+        }
+        .badge-warning {
+            background-color: #f0ad4e;
+        }
+        .badge-danger {
+            background-color: #e74c3c;
+        }
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .flex-item {
+            flex: 1;
+            min-width: 300px;
+        }
+         {
+            body {
+                background-color: white;
+            }
+            .no-print {
+                display: none;
+            }
+            .card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            .page-break {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">TAÇA PADRE CÍCERO - EDIÇÃO 2025</h1>
+            <button id="adminBtn" class="btn btn-primary no-print">Área Administrativa</button>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <div class="container mx-auto">
+        <!-- Área pública -->
+        <div id="publicArea">
+            <!-- Abas para as categorias -->
+            <div class="mb-4 no-print">
+                <button class="tab-button active" onclick="openCategory(event, 'juvenil')">Juvenil</button>
+                <button class="tab-button" onclick="openCategory(event, 'adulto')">Adulto</button>
+                <button class="tab-button" onclick="openCategory(event, 'junior')">Junior</button>
+            </div>
+
+            <!-- Conteúdo da categoria Juvenil -->
+            <div id="juvenil" class="tab-content active">
+                <div class="card mb-4">
+                    <h2 class="text-xl font-bold mb-4">Classificação - Juvenil</h2>
+                    <table id="classificacaoJuvenil">
+                        <thead>
+                            <tr>
+                                <th>Pos.</th>
+                                <th>Time</th>
+                                <th>P</th>
+                                <th>J</th>
+                                <th>V</th>
+                                <th>E</th>
+                                <th>D</th>
+                                <th>GP</th>
+                                <th>GC</th>
+                                <th>SG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Preenchido via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card mb-4">
+                    <h2 class="text-xl font-bold mb-4">Jogos - Juvenil</h2>
+                    <table id="jogosJuvenil">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Time Casa</th>
+                                <th>Placar</th>
+                                <th>Time Visitante</th>
+                                <th>Observações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Preenchido via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h2 class="text-xl font-bold mb-4">Artilheiros - Juvenil</h2>
+                    <table id="artilheirosJuvenil">
+                        <thead>
+                            <tr>
+                                <th>Jogador</th>
+                                <th>Time</th>
+                                <th>Gols</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Preenchido via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Conteúdo da categoria Adulto -->
+            <div id="adulto" class="tab-content">
+                <div class="flex-container">
+                    <div class="flex-item card mb-4">
+                        <h2 class="text-xl font-bold mb-4">Classificação - Chave A - Adulto</h2>
+                        <table id="classificacaoAdultoA">
+                            <thead>
+                                <tr>
+                                    <th>Pos.</th>
+                                    <th>Time</th>
+                                    <th>P</th>
+                                    <th>J</th>
+                                    <th>V</th>
+                                    <th>E</th>
+                                    <th>D</th>
+                                    <th>GP</th>
+                                    <th>GC</th>
+                                    <th>SG</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Preenchido via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="flex-item card mb-4">
+                        <h2 class="text-xl font-bold mb-4">Classificação - Chave B - Adulto</h2>
+                        <table id="classificacaoAdultoB">
+                            <thead>
+                                <tr>
+                                    <th>Pos.</th>
+                                    <th>Time</th>
+                                    <th>P</th>
+                                    <th>J</th>
+                                    <th>V</th>
+                                    <th>E</th>
+                                    <th>D</th>
+                                    <th>GP</th>
+                                    <th>GC</th>
+                                    <th>SG</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Preenchido via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <h2 class="text-xl font-bold mb-4">Jogos - Primeira Fase - Adulto</h2>
+                    <table id="jogosAdulto">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Chave</th>
+                                <th>Time Casa</th>
+                                <th>Placar</th>
+                                <th>Time Visitante</th>
+                                <th>Observações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Preenchido via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card mb-4">
+                    <h2 class="text-xl font-bold mb-4">Semifinais - Adulto</h2>
+                    <table id="semifinaisAdulto">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Time Casa</th>
+                                <th>Placar</th>
+                                <th>Time Visitante</th>
+                                <th>Observações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Preenchido via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card mb-4">
+                    <h2 class="text-xl font-bold mb-4">Final - Adulto</h2>
+                    <table id="finalAdulto">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Time Casa</th>
+                                <th>Placar</th>
+                                <th>Time Visitante</th>
+                                <th>Observações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Preenchido via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h2 class="text-xl font-bold mb-4">Artilheiros - Adulto</h2>
+                    <table id="artilheirosAdulto">
+                        <thead>
+                            <tr>
+                                <th>Jogador</th>
+                                <th>Time</th>
+                                <th>Gols</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Preenchido via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Conteúdo da categoria Junior -->
+            <div id="junior" class="tab-content">
+                <div class="flex-container">
+                    <div class="flex-item card mb-4">
+                        <h2 class="text-xl font-bold mb-4">Classificação - Chave A - Junior</h2>
+                        <table id="classificacaoJuniorA">
+                            <thead>
+                                <tr>
+                                    <th>Pos.</th>
+                                    <th>Time</th>
+                                    <th>P</th>
+                                    <th>J</th>
+                                    <th>V</th>
+                                    <th>E</th>
+                                    <th>D</th>
+                                    <th>GP</th>
+                                    <th>GC</th>
+                                    <th>SG</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Preenchido via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="flex-item card mb-4">
+                        <h2 class="text-xl font-bold mb-4">Classificação - Chave B - Junior</h2>
+                        <table id="classificacaoJuniorB">
+                            <thead>
+                                <tr>
+                                    <th>Pos.</th>
+                                    <th>Time</th>
+                                    <th>P</th>
+                                    <th>J</th>
+                                    <th>V</th>
+                                    <th>E</th>
+                                    <th>D</th>
+                                    <th>GP</th>
+                                    <th>GC</th>
+                                    <th>SG</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Preenchido via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <h2 class="text-xl font-bold mb-4">Jogos - Primeira Fase - Junior</h2>
+                    <table id="jogosJunior">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Chave</th>
+                                <th>Time Casa</th>
+                                <th>Placar</th>
+                                <th>Time Visitante</th>
+                                <th>Observações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Preenchido via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card mb-4">
+                    <h2 class="text-xl font-bold mb-4">Semifinais - Junior</h2>
+                    <table id="semifinaisJunior">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Time Casa</th>
+                                <th>Placar</th>
+                                <th>Time Visitante</th>
+                                <th>Observações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Preenchido via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card mb-4">
+                    <h2 class="text-xl font-bold mb-4">Final - Junior</h2>
+                    <table id="finalJunior">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Time Casa</th>
+                                <th>Placar</th>
+                                <th>Time Visitante</th>
+                                <th>Observações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Preenchido via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h2 class="text-xl font-bold mb-4">Artilheiros - Junior</h2>
+                    <table id="artilheirosJunior">
+                        <thead>
+                            <tr>
+                                <th>Jogador</th>
+                                <th>Time</th>
+                                <th>Gols</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Preenchido via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Área administrativa (oculta inicialmente) -->
+        <div id="adminArea" class="hidden">
+            <div class="card mb-4">
+                <h2 class="text-xl font-bold mb-4">Login Administrativo</h2>
+                <div id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Usuário:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div id="loginError" class="alert alert-danger hidden">Usuário ou senha incorretos.</div>
+                    <button id="loginBtn" class="btn btn-primary">Entrar</button>
+                    <button id="backToPublicBtn" class="btn btn-danger">Voltar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel Administrativo (oculto inicialmente) -->
+        <div id="adminPanel" class="hidden">
+            <div class="mb-4">
+                <h2 class="text-xl font-bold mb-2">Painel Administrativo</h2>
+                <button id="logoutBtn" class="btn btn-danger mb-4">Sair</button>
+                
+                <div class="mb-4">
+                    <button class="tab-button active" onclick="openAdminTab(event, 'gerenciarJogos')">Gerenciar Jogos</button>
+                    <button class="tab-button" onclick="openAdminTab(event, 'gerenciarArtilheiros')">Gerenciar Artilheiros</button>
+                    <button class="tab-button" onclick="openAdminTab(event, 'gerenciarOrdem')">Alterar Ordem dos Jogos</button>
+                </div>
+            </div>
+
+            <!-- Tab para Gerenciar Jogos -->
+            <div id="gerenciarJogos" class="admin-tab active">
+                <div class="card mb-4">
+                    <h3 class="text-lg font-bold mb-4">Registrar Resultado</h3>
+                    <div class="form-group">
+                        <label for="categoriaJogo">Categoria:</label>
+                        <select id="categoriaJogo" onchange="updateJogosSelect()">
+                            <option value="juvenil">Juvenil</option>
+                            <option value="adulto">Adulto</option>
+                            <option value="junior">Junior</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="faseJogo">Fase:</label>
+                        <select id="faseJogo" onchange="updateJogosSelect()">
+                            <option value="fase1">Primeira Fase</option>
+                            <option value="semifinal">Semifinal</option>
+                            <option value="final">Final</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="jogoSelect">Selecione o Jogo:</label>
+                        <select id="jogoSelect">
+                            <!-- Preenchido via JavaScript -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dataJogo">Data e Hora:</label>
+                        <input type="text" id="dataJogo" placeholder="Ex: 25/07/2025 14:00">
+                    </div>
+                    <div class="flex-container">
+                        <div class="flex-item">
+                            <div class="form-group">
+                                <label for="golsCasa">Gols Casa:</label>
+                                <input type="number" id="golsCasa" min="0">
+                            </div>
+                        </div>
+                        <div class="flex-item">
+                            <div class="form-group">
+                                <label for="golsVisitante">Gols Visitante:</label>
+                                <input type="number" id="golsVisitante" min="0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="obsJogo">Observações:</label>
+                        <textarea id="obsJogo" rows="3"></textarea>
+                    </div>
+                    <button id="salvarResultadoBtn" class="btn btn-success">Salvar Resultado</button>
+                </div>
+            </div>
+
+            <!-- Tab para Gerenciar Artilheiros -->
+            <div id="gerenciarArtilheiros" class="admin-tab hidden">
+                <div class="card mb-4">
+                    <h3 class="text-lg font-bold mb-4">Adicionar Gols para Artilheiro</h3>
+                    <div class="form-group">
+                        <label for="categoriaArtilheiro">Categoria:</label>
+                        <select id="categoriaArtilheiro">
+                            <option value="juvenil">Juvenil</option>
+                            <option value="adulto">Adulto</option>
+                            <option value="junior">Junior</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nomeArtilheiro">Nome do Jogador:</label>
+                        <input type="text" id="nomeArtilheiro">
+                    </div>
+                    <div class="form-group">
+                        <label for="timeArtilheiro">Time:</label>
+                        <select id="timeArtilheiro">
+                            <!-- Preenchido via JavaScript -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="golsArtilheiro">Quantidade de Gols:</label>
+                        <input type="number" id="golsArtilheiro" min="1" value="1">
+                    </div>
+                    <button id="adicionarGolsBtn" class="btn btn-success">Adicionar Gols</button>
+                </div>
+
+                <div class="card">
+                    <h3 class="text-lg font-bold mb-4">Gerenciar Artilheiros Existentes</h3>
+                    <div class="form-group">
+                        <label for="categoriaArtilheiroExistente">Categoria:</label>
+                        <select id="categoriaArtilheiroExistente" onchange="carregarArtilheirosExistentes()">
+                            <option value="juvenil">Juvenil</option>
+                            <option value="adulto">Adulto</option>
+                            <option value="junior">Junior</option>
+                        </select>
+                    </div>
+                    <table id="tabelaArtilheirosExistentes">
+                        <thead>
+                            <tr>
+                                <th>Jogador</th>
+                                <th>Time</th>
+                                <th>Gols</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Preenchido via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab para Alterar Ordem dos Jogos -->
+            <div id="gerenciarOrdem" class="admin-tab hidden">
+                <div class="card mb-4">
+                    <h3 class="text-lg font-bold mb-4">Alterar Ordem dos Jogos</h3>
+                    <div class="form-group">
+                        <label for="categoriaOrdem">Categoria:</label>
+                        <select id="categoriaOrdem" onchange="carregarJogosParaOrdenacao()">
+                            <option value="juvenil">Juvenil</option>
+                            <option value="adulto">Adulto</option>
+                            <option value="junior">Junior</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="faseOrdem">Fase:</label>
+                        <select id="faseOrdem" onchange="carregarJogosParaOrdenacao()">
+                            <option value="fase1">Primeira Fase</option>
+                            <option value="semifinal">Semifinal</option>
+                            <option value="final">Final</option>
+                        </select>
+                    </div>
+                    <div class="alert alert-success mb-4">
+                        Arraste e solte os jogos para reordenar. As alterações serão salvas automaticamente.
+                    </div>
+                    <table id="tabelaOrdemJogos">
+                        <thead>
+                            <tr>
+                                <th>Ordem</th>
+                                <th>Time Casa</th>
+                                <th>vs</th>
+                                <th>Time Visitante</th>
+                            </tr>
+                        </thead>
+                        <tbody id="corpoTabelaOrdemJogos">
+                            <!-- Preenchido via JavaScript -->
+                        </tbody>
+                    </table>
+                    <button id="salvarOrdemJogosBtn" class="btn btn-success mt-4">Salvar Nova Ordem</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar artilheiro -->
+    <div id="editarArtilheiroModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModalArtilheiro()">&times;</span>
+            <h3 class="text-lg font-bold mb-4">Editar Artilheiro</h3>
+            <input type="hidden" id="artilheiroId">
+            <div class="form-group">
+                <label for="editNomeArtilheiro">Nome do Jogador:</label>
+                <input type="text" id="editNomeArtilheiro">
+            </div>
+            <div class="form-group">
+                <label for="editTimeArtilheiro">Time:</label>
+                <select id="editTimeArtilheiro">
+                    <!-- Preenchido via JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="editGolsArtilheiro">Quantidade de Gols:</label>
+                <input type="number" id="editGolsArtilheiro" min="0">
+            </div>
+            <button id="salvarEdicaoArtilheiroBtn" class="btn btn-success">Salvar Alterações</button>
+            <button id="excluirArtilheiroBtn" class="btn btn-danger">Excluir Artilheiro</button>
+        </div>
+    </div>
+
+    <script>
+        // Dados iniciais do campeonato
+        const dadosCampeonato = {
+            juvenil: {
+                times: [
+                    "NATAL-RN",
+                    "EDUARDO COELHO-PE",
+                    "HCK-CE",
+                    "MIRAIMA-CE",
+                    "SALGUEIRO-PE"
+                ],
+                jogos: [],
+                artilheiros: []
+            },
+            adulto: {
+                chaveA: [
+                    "HANDEBOL JUAZEIRO-CE",
+                    "PETROLINA-PE",
+                    "CRAJUBAR-CE"
+                ],
+                chaveB: [
+                    "EXU-PE",
+                    "EDUARDO COELHO-PE",
+                    "JUÁ ATLÉTICO HANDEBOL-CE"
+                ],
+                jogos: [],
+                semifinais: [],
+                final: [],
+                artilheiros: []
+            },
+            junior: {
+                chaveA: [
+                    "MIRAIMA-CE",
+                    "SALGUEIRO-PE",
+                    "BARBALHA-CE"
+                ],
+                chaveB: [
+                    "HANDEBOL JUAZEIRO-CE",
+                    "HCK-CE",
+                    "EDUARDO COELHO-PE"
+                ],
+                jogos: [],
+                semifinais: [],
+                final: [],
+                artilheiros: []
+            }
+        };
+
+        // Funções para manipulação de localStorage
+        function salvarDados() {
+            localStorage.setItem('dadosCampeonato', JSON.stringify(dadosCampeonato));
+        }
+
+        function carregarDados() {
+            const dados = localStorage.getItem('dadosCampeonato');
+            if (dados) {
+                const dadosParseados = JSON.parse(dados);
+                Object.assign(dadosCampeonato, dadosParseados);
+            } else {
+                // Se não houver dados salvos, criar jogos iniciais
+                inicializarJogos();
+            }
+        }
+
+        // Inicialização de jogos
+        function inicializarJogos() {
+            // Juvenil (todos contra todos)
+            const timesJuvenil = dadosCampeonato.juvenil.times;
+            for (let i = 0; i < timesJuvenil.length; i++) {
+                for (let j = i + 1; j < timesJuvenil.length; j++) {
+                    dadosCampeonato.juvenil.jogos.push({
+                        id: `juvenil_${i}_${j}`,
+                        timeCasa: timesJuvenil[i],
+                        timeVisitante: timesJuvenil[j],
+                        golsCasa: null,
+                        golsVisitante: null,
+                        data: "",
+                        observacoes: ""
+                    });
+                }
+            }
+
+            // Adulto (fase de grupos)
+            const timesAdultoA = dadosCampeonato.adulto.chaveA;
+            const timesAdultoB = dadosCampeonato.adulto.chaveB;
+
+            // Jogos da chave A
+            for (let i = 0; i < timesAdultoA.length; i++) {
+                for (let j = i + 1; j < timesAdultoA.length; j++) {
+                    dadosCampeonato.adulto.jogos.push({
+                        id: `adultoA_${i}_${j}`,
+                        chave: "A",
+                        timeCasa: timesAdultoA[i],
+                        timeVisitante: timesAdultoA[j],
+                        golsCasa: null,
+                        golsVisitante: null,
+                        data: "",
+                        observacoes: ""
+                    });
+                }
+            }
+
+            // Jogos da chave B
+            for (let i = 0; i < timesAdultoB.length; i++) {
+                for (let j = i + 1; j < timesAdultoB.length; j++) {
+                    dadosCampeonato.adulto.jogos.push({
+                        id: `adultoB_${i}_${j}`,
+                        chave: "B",
+                        timeCasa: timesAdultoB[i],
+                        timeVisitante: timesAdultoB[j],
+                        golsCasa: null,
+                        golsVisitante: null,
+                        data: "",
+                        observacoes: ""
+                    });
+                }
+            }
+
+            // Criar semifinais
+            dadosCampeonato.adulto.semifinais = [
+                {
+                    id: "semifinal_adulto_1",
+                    timeCasa: "1º Colocado Chave A",
+                    timeVisitante: "2º Colocado Chave B",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "",
+                    observacoes: ""
+                },
+                {
+                    id: "semifinal_adulto_2",
+                    timeCasa: "1º Colocado Chave B",
+                    timeVisitante: "2º Colocado Chave A",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "",
+                    observacoes: ""
+                }
+            ];
+
+            // Criar final
+            dadosCampeonato.adulto.final = [
+                {
+                    id: "final_adulto",
+                    timeCasa: "Vencedor Semifinal 1",
+                    timeVisitante: "Vencedor Semifinal 2",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "",
+                    observacoes: ""
+                }
+            ];
+
+            // Junior (fase de grupos)
+            const timesJuniorA = dadosCampeonato.junior.chaveA;
+            const timesJuniorB = dadosCampeonato.junior.chaveB;
+
+            // Jogos da chave A
+            for (let i = 0; i < timesJuniorA.length; i++) {
+                for (let j = i + 1; j < timesJuniorA.length; j++) {
+                    dadosCampeonato.junior.jogos.push({
+                        id: `juniorA_${i}_${j}`,
+                        chave: "A",
+                        timeCasa: timesJuniorA[i],
+                        timeVisitante: timesJuniorA[j],
+                        golsCasa: null,
+                        golsVisitante: null,
+                        data: "",
+                        observacoes: ""
+                    });
+                }
+            }
+
+            // Jogos da chave B
+            for (let i = 0; i < timesJuniorB.length; i++) {
+                for (let j = i + 1; j < timesJuniorB.length; j++) {
+                    dadosCampeonato.junior.jogos.push({
+                        id: `juniorB_${i}_${j}`,
+                        chave: "B",
+                        timeCasa: timesJuniorB[i],
+                        timeVisitante: timesJuniorB[j],
+                        golsCasa: null,
+                        golsVisitante: null,
+                        data: "",
+                        observacoes: ""
+                    });
+                }
+            }
+
+            // Criar semifinais
+            dadosCampeonato.junior.semifinais = [
+                {
+                    id: "semifinal_junior_1",
+                    timeCasa: "1º Colocado Chave A",
+                    timeVisitante: "2º Colocado Chave B",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "",
+                    observacoes: ""
+                },
+                {
+                    id: "semifinal_junior_2",
+                    timeCasa: "1º Colocado Chave B",
+                    timeVisitante: "2º Colocado Chave A",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "",
+                    observacoes: ""
+                }
+            ];
+
+            // Criar final
+            dadosCampeonato.junior.final = [
+                {
+                    id: "final_junior",
+                    timeCasa: "Vencedor Semifinal 1",
+                    timeVisitante: "Vencedor Semifinal 2",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "",
+                    observacoes: ""
+                }
+            ];
+
+            salvarDados();
+        }
+
+        // Funções para cálculo de classificação
+        function calcularClassificacaoJuvenil() {
+            const jogos = dadosCampeonato.juvenil.jogos;
+            const times = dadosCampeonato.juvenil.times;
+            
+            // Inicializar estatísticas
+            let estatisticas = {};
+            times.forEach(time => {
+                estatisticas[time] = {
+                    nome: time,
+                    pontos: 0,
+                    jogos: 0,
+                    vitorias: 0,
+                    empates: 0,
+                    derrotas: 0,
+                    golsPro: 0,
+                    golsContra: 0,
+                    saldoGols: 0
+                };
+            });
+            
+            // Calcular estatísticas com base nos jogos
+            jogos.forEach(jogo => {
+                if (jogo.golsCasa !== null && jogo.golsVisitante !== null) {
+                    const timeCasa = estatisticas[jogo.timeCasa];
+                    const timeVisitante = estatisticas[jogo.timeVisitante];
+                    
+                    // Atualizar jogos
+                    timeCasa.jogos++;
+                    timeVisitante.jogos++;
+                    
+                    // Atualizar gols
+                    timeCasa.golsPro += jogo.golsCasa;
+                    timeCasa.golsContra += jogo.golsVisitante;
+                    timeVisitante.golsPro += jogo.golsVisitante;
+                    timeVisitante.golsContra += jogo.golsCasa;
+                    
+                    // Atualizar resultados
+                    if (jogo.golsCasa > jogo.golsVisitante) {
+                        // Vitória casa
+                        timeCasa.vitorias++;
+                        timeCasa.pontos += 3;
+                        timeVisitante.derrotas++;
+                    } else if (jogo.golsCasa < jogo.golsVisitante) {
+                        // Vitória visitante
+                        timeVisitante.vitorias++;
+                        timeVisitante.pontos += 3;
+                        timeCasa.derrotas++;
+                    } else {
+                        // Empate
+                        timeCasa.empates++;
+                        timeCasa.pontos += 1;
+                        timeVisitante.empates++;
+                        timeVisitante.pontos += 1;
+                    }
+                }
+            });
+            
+            // Calcular saldo de gols
+            Object.keys(estatisticas).forEach(time => {
+                estatisticas[time].saldoGols = estatisticas[time].golsPro - estatisticas[time].golsContra;
+            });
+            
+            // Converter para array e ordenar
+            let classificacao = Object.values(estatisticas);
+            
+            // Ordenar por: pontos, vitorias, saldo, gols pró, goal average
+            classificacao.sort((a, b) => {
+                if (a.pontos !== b.pontos) return b.pontos - a.pontos;
+                if (a.vitorias !== b.vitorias) return b.vitorias - a.vitorias;
+                if (a.saldoGols !== b.saldoGols) return b.saldoGols - a.saldoGols;
+                if (a.golsPro !== b.golsPro) return b.golsPro - a.golsPro;
+                
+                // Gol average (razão entre gols pró e contra)
+                const goalAverageA = a.golsContra === 0 ? a.golsPro : a.golsPro / a.golsContra;
+                const goalAverageB = b.golsContra === 0 ? b.golsPro : b.golsPro / b.golsContra;
+                return goalAverageB - goalAverageA;
+            });
+            
+            return classificacao;
+        }
+
+        function calcularClassificacaoChave(categoria, chave) {
+            const jogos = dadosCampeonato[categoria].jogos.filter(jogo => jogo.chave === chave);
+            const times = dadosCampeonato[categoria][`chave${chave}`];
+            
+            // Inicializar estatísticas
+            let estatisticas = {};
+            times.forEach(time => {
+                estatisticas[time] = {
+                    nome: time,
+                    pontos: 0,
+                    jogos: 0,
+                    vitorias: 0,
+                    empates: 0,
+                    derrotas: 0,
+                    golsPro: 0,
+                    golsContra: 0,
+                    saldoGols: 0
+                };
+            });
+            
+            // Calcular estatísticas com base nos jogos
+            jogos.forEach(jogo => {
+                if (jogo.golsCasa !== null && jogo.golsVisitante !== null) {
+                    const timeCasa = estatisticas[jogo.timeCasa];
+                    const timeVisitante = estatisticas[jogo.timeVisitante];
+                    
+                    // Atualizar jogos
+                    timeCasa.jogos++;
+                    timeVisitante.jogos++;
+                    
+                    // Atualizar gols
+                    timeCasa.golsPro += jogo.golsCasa;
+                    timeCasa.golsContra += jogo.golsVisitante;
+                    timeVisitante.golsPro += jogo.golsVisitante;
+                    timeVisitante.golsContra += jogo.golsCasa;
+                    
+                    // Atualizar resultados
+                    if (jogo.golsCasa > jogo.golsVisitante) {
+                        // Vitória casa
+                        timeCasa.vitorias++;
+                        timeCasa.pontos += 3;
+                        timeVisitante.derrotas++;
+                    } else if (jogo.golsCasa < jogo.golsVisitante) {
+                        // Vitória visitante
+                        timeVisitante.vitorias++;
+                        timeVisitante.pontos += 3;
+                        timeCasa.derrotas++;
+                    } else {
+                        // Empate
+                        timeCasa.empates++;
+                        timeCasa.pontos += 1;
+                        timeVisitante.empates++;
+                        timeVisitante.pontos += 1;
+                    }
+                }
+            });
+            
+            // Calcular saldo de gols
+            Object.keys(estatisticas).forEach(time => {
+                estatisticas[time].saldoGols = estatisticas[time].golsPro - estatisticas[time].golsContra;
+            });
+            
+            // Converter para array e ordenar
+            let classificacao = Object.values(estatisticas);
+            
+            // Ordenar por: pontos, vitorias, saldo, gols pró, goal average
+            classificacao.sort((a, b) => {
+                if (a.pontos !== b.pontos) return b.pontos - a.pontos;
+                if (a.vitorias !== b.vitorias) return b.vitorias - a.vitorias;
+                if (a.saldoGols !== b.saldoGols) return b.saldoGols - a.saldoGols;
+                if (a.golsPro !== b.golsPro) return b.golsPro - a.golsPro;
+                
+                // Gol average (razão entre gols pró e contra)
+                const goalAverageA = a.golsContra === 0 ? a.golsPro : a.golsPro / a.golsContra;
+                const goalAverageB = b.golsContra === 0 ? b.golsPro : b.golsPro / b.golsContra;
+                return goalAverageB - goalAverageA;
+            });
+            
+            return classificacao;
+        }
+
+        // Funções para atualizar semifinais e finais
+        function atualizarSemifinaisEFinais(categoria) {
+            const classificacaoA = calcularClassificacaoChave(categoria, "A");
+            const classificacaoB = calcularClassificacaoChave(categoria, "B");
+            
+            if (classificacaoA.length >= 2 && classificacaoB.length >= 2) {
+                // Atualizar semifinal 1 (1º A vs 2º B)
+                dadosCampeonato[categoria].semifinais[0].timeCasa = classificacaoA[0].nome;
+                dadosCampeonato[categoria].semifinais[0].timeVisitante = classificacaoB[1].nome;
+                
+                // Atualizar semifinal 2 (1º B vs 2º A)
+                dadosCampeonato[categoria].semifinais[1].timeCasa = classificacaoB[0].nome;
+                dadosCampeonato[categoria].semifinais[1].timeVisitante = classificacaoA[1].nome;
+                
+                // Atualizar final com base nos resultados das semifinais
+                const semifinal1 = dadosCampeonato[categoria].semifinais[0];
+                const semifinal2 = dadosCampeonato[categoria].semifinais[1];
+                
+                if (semifinal1.golsCasa !== null && semifinal1.golsVisitante !== null &&
+                    semifinal2.golsCasa !== null && semifinal2.golsVisitante !== null) {
+                    
+                    // Determinar vencedor da semifinal 1
+                    let vencedorSemi1 = semifinal1.golsCasa > semifinal1.golsVisitante 
+                        ? semifinal1.timeCasa 
+                        : semifinal1.timeVisitante;
+                    
+                    // Determinar vencedor da semifinal 2
+                    let vencedorSemi2 = semifinal2.golsCasa > semifinal2.golsVisitante 
+                        ? semifinal2.timeCasa 
+                        : semifinal2.timeVisitante;
+                    
+                    // Empates nas semifinais (cobrança de tiros de 7 metros)
+                    if (semifinal1.golsCasa === semifinal1.golsVisitante) {
+                        vencedorSemi1 += " (venc. 7m)";
+                    }
+                    if (semifinal2.golsCasa === semifinal2.golsVisitante) {
+                        vencedorSemi2 += " (venc. 7m)";
+                    }
+                    
+                    // Atualizar final
+                    dadosCampeonato[categoria].final[0].timeCasa = vencedorSemi1;
+                    dadosCampeonato[categoria].final[0].timeVisitante = vencedorSemi2;
+                }
+            }
+            
+            salvarDados();
+        }
+
+        // Funções para exibição de dados
+        function exibirClassificacao(categoria, elemento, chave = null) {
+            let classificacao;
+            if (categoria === 'juvenil') {
+                classificacao = calcularClassificacaoJuvenil();
+            } else {
+                classificacao = calcularClassificacaoChave(categoria, chave);
+            }
+            
+            const tbody = document.querySelector(`#${elemento} tbody`);
+            tbody.innerHTML = '';
+            
+            classificacao.forEach((time, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${time.nome}</td>
+                    <td>${time.pontos}</td>
+                    <td>${time.jogos}</td>
+                    <td>${time.vitorias}</td>
+                    <td>${time.empates}</td>
+                    <td>${time.derrotas}</td>
+                    <td>${time.golsPro}</td>
+                    <td>${time.golsContra}</td>
+                    <td>${time.saldoGols}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function exibirJogos(jogos, elemento) {
+            const tbody = document.querySelector(`#${elemento} tbody`);
+            tbody.innerHTML = '';
+            
+            jogos.forEach(jogo => {
+                const row = document.createElement('tr');
+                let placar = "vs";
+                if (jogo.golsCasa !== null && jogo.golsVisitante !== null) {
+                    placar = `${jogo.golsCasa} x ${jogo.golsVisitante}`;
+                }
+                
+                if (jogos === dadosCampeonato.juvenil.jogos) {
+                    row.innerHTML = `
+                        <td>${jogo.data}</td>
+                        <td>${jogo.timeCasa}</td>
+                        <td>${placar}</td>
+                        <td>${jogo.timeVisitante}</td>
+                        <td>${jogo.observacoes || ""}</td>
+                    `;
+                } else {
+                    row.innerHTML = `
+                        <td>${jogo.data}</td>
+                        <td>${jogo.chave || ""}</td>
+                        <td>${jogo.timeCasa}</td>
+                        <td>${placar}</td>
+                        <td>${jogo.timeVisitante}</td>
+                        <td>${jogo.observacoes || ""}</td>
+                    `;
+                }
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        function exibirSemifinal(semifinais, elemento) {
+            const tbody = document.querySelector(`#${elemento} tbody`);
+            tbody.innerHTML = '';
+            
+            semifinais.forEach(jogo => {
+                const row = document.createElement('tr');
+                let placar = "vs";
+                if (jogo.golsCasa !== null && jogo.golsVisitante !== null) {
+                    placar = `${jogo.golsCasa} x ${jogo.golsVisitante}`;
+                }
+                
+                row.innerHTML = `
+                    <td>${jogo.data}</td>
+                    <td>${jogo.timeCasa}</td>
+                    <td>${placar}</td>
+                    <td>${jogo.timeVisitante}</td>
+                    <td>${jogo.observacoes || ""}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        function exibirFinal(final, elemento) {
+            const tbody = document.querySelector(`#${elemento} tbody`);
+            tbody.innerHTML = '';
+            
+            final.forEach(jogo => {
+                const row = document.createElement('tr');
+                let placar = "vs";
+                if (jogo.golsCasa !== null && jogo.golsVisitante !== null) {
+                    placar = `${jogo.golsCasa} x ${jogo.golsVisitante}`;
+                }
+                
+                row.innerHTML = `
+                    <td>${jogo.data}</td>
+                    <td>${jogo.timeCasa}</td>
+                    <td>${placar}</td>
+                    <td>${jogo.timeVisitante}</td>
+                    <td>${jogo.observacoes || ""}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        function exibirArtilheiros(artilheiros, elemento) {
+            const tbody = document.querySelector(`#${elemento} tbody`);
+            tbody.innerHTML = '';
+            
+            // Ordenar artilheiros pelo número de gols
+            artilheiros.sort((a, b) => b.gols - a.gols);
+            
+            artilheiros.forEach(artilheiro => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${artilheiro.nome}</td>
+                    <td>${artilheiro.time}</td>
+                    <td>${artilheiro.gols}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Função para atualizar os dados no DOM
+        function atualizarDados() {
+            // Atualizar classificações
+            exibirClassificacao('juvenil', 'classificacaoJuvenil');
+            exibirClassificacao('adulto', 'classificacaoAdultoA', 'A');
+            exibirClassificacao('adulto', 'classificacaoAdultoB', 'B');
+            exibirClassificacao('junior', 'classificacaoJuniorA', 'A');
+            exibirClassificacao('junior', 'classificacaoJuniorB', 'B');
+            
+            // Atualizar jogos
+            exibirJogos(dadosCampeonato.juvenil.jogos, 'jogosJuvenil');
+            exibirJogos(dadosCampeonato.adulto.jogos, 'jogosAdulto');
+            exibirJogos(dadosCampeonato.junior.jogos, 'jogosJunior');
+            
+            // Atualizar semifinais e finais
+            exibirSemifinal(dadosCampeonato.adulto.semifinais, 'semifinaisAdulto');
+            exibirSemifinal(dadosCampeonato.junior.semifinais, 'semifinaisJunior');
+            exibirFinal(dadosCampeonato.adulto.final, 'finalAdulto');
+            exibirFinal(dadosCampeonato.junior.final, 'finalJunior');
+            
+            // Atualizar artilheiros
+            exibirArtilheiros(dadosCampeonato.juvenil.artilheiros, 'artilheirosJuvenil');
+            exibirArtilheiros(dadosCampeonato.adulto.artilheiros, 'artilheirosAdulto');
+            exibirArtilheiros(dadosCampeonato.junior.artilheiros, 'artilheirosJunior');
+        }
+
+        // Funções para a área administrativa
+        function atualizarTimeArtilheiroOptions() {
+            const categoria = document.getElementById('categoriaArtilheiro').value;
+            const select = document.getElementById('timeArtilheiro');
+            select.innerHTML = '';
+            
+            let times = [];
+            if (categoria === 'juvenil') {
+                times = dadosCampeonato.juvenil.times;
+            } else if (categoria === 'adulto') {
+                times = [...dadosCampeonato.adulto.chaveA, ...dadosCampeonato.adulto.chaveB];
+            } else {
+                times = [...dadosCampeonato.junior.chaveA, ...dadosCampeonato.junior.chaveB];
+            }
+            
+            times.forEach(time => {
+                const option = document.createElement('option');
+                option.value = time;
+                option.textContent = time;
+                select.appendChild(option);
+            });
+        }
+
+        function updateJogosSelect() {
+            const categoria = document.getElementById('categoriaJogo').value;
+            const fase = document.getElementById('faseJogo').value;
+            const select = document.getElementById('jogoSelect');
+            select.innerHTML = '';
+            
+            let jogos = [];
+            if (fase === 'fase1') {
+                jogos = dadosCampeonato[categoria].jogos;
+            } else if (fase === 'semifinal') {
+                jogos = dadosCampeonato[categoria].semifinais;
+            } else {
+                jogos = dadosCampeonato[categoria].final;
+            }
+            
+            jogos.forEach(jogo => {
+                const option = document.createElement('option');
+                option.value = jogo.id;
+                let label = "";
+                
+                if (categoria !== 'juvenil' && fase === 'fase1') {
+                    label = `Chave ${jogo.chave}: ${jogo.timeCasa} vs ${jogo.timeVisitante}`;
+                } else {
+                    label = `${jogo.timeCasa} vs ${jogo.timeVisitante}`;
+                }
+                
+                option.textContent = label;
+                select.appendChild(option);
+            });
+
+            // Preencher informações do jogo selecionado
+            if (select.options.length > 0) {
+                preencherInformacoesJogo();
+            }
+        }
+
+        function preencherInformacoesJogo() {
+            const categoria = document.getElementById('categoriaJogo').value;
+            const fase = document.getElementById('faseJogo').value;
+            const jogoId = document.getElementById('jogoSelect').value;
+            
+            let jogo;
+            if (fase === 'fase1') {
+                jogo = dadosCampeonato[categoria].jogos.find(j => j.id === jogoId);
+            } else if (fase === 'semifinal') {
+                jogo = dadosCampeonato[categoria].semifinais.find(j => j.id === jogoId);
+            } else {
+                jogo = dadosCampeonato[categoria].final.find(j => j.id === jogoId);
+            }
+            
+            if (jogo) {
+                document.getElementById('dataJogo').value = jogo.data || '';
+                document.getElementById('golsCasa').value = jogo.golsCasa !== null ? jogo.golsCasa : '';
+                document.getElementById('golsVisitante').value = jogo.golsVisitante !== null ? jogo.golsVisitante : '';
+                document.getElementById('obsJogo').value = jogo.observacoes || '';
+            }
+        }
+
+        function salvarResultado() {
+            const categoria = document.getElementById('categoriaJogo').value;
+            const fase = document.getElementById('faseJogo').value;
+            const jogoId = document.getElementById('jogoSelect').value;
+            const data = document.getElementById('dataJogo').value;
+            const golsCasa = parseInt(document.getElementById('golsCasa').value) || 0;
+            const golsVisitante = parseInt(document.getElementById('golsVisitante').value) || 0;
+            const observacoes = document.getElementById('obsJogo').value;
+            
+            let jogo;
+            if (fase === 'fase1') {
+                jogo = dadosCampeonato[categoria].jogos.find(j => j.id === jogoId);
+            } else if (fase === 'semifinal') {
+                jogo = dadosCampeonato[categoria].semifinais.find(j => j.id === jogoId);
+            } else {
+                jogo = dadosCampeonato[categoria].final.find(j => j.id === jogoId);
+            }
+            
+            if (jogo) {
+                jogo.data = data;
+                jogo.golsCasa = golsCasa;
+                jogo.golsVisitante = golsVisitante;
+                jogo.observacoes = observacoes;
+                
+                if (fase === 'semifinal') {
+                    atualizarSemifinaisEFinais(categoria);
+                }
+                
+                salvarDados();
+                atualizarDados();
+                
+                alert('Resultado salvo com sucesso!');
+            }
+        }
+
+        function adicionarGolsArtilheiro() {
+            const categoria = document.getElementById('categoriaArtilheiro').value;
+            const nome = document.getElementById('nomeArtilheiro').value.trim();
+            const time = document.getElementById('timeArtilheiro').value;
+            const gols = parseInt(document.getElementById('golsArtilheiro').value) || 0;
+            
+            if (!nome) {
+                alert('Por favor, informe o nome do jogador.');
+                return;
+            }
+            
+            if (gols <= 0) {
+                alert('Por favor, informe uma quantidade válida de gols.');
+                return;
+            }
+            
+            // Verificar se o artilheiro já existe
+            let artilheiro = dadosCampeonato[categoria].artilheiros.find(
+                a => a.nome.toLowerCase() === nome.toLowerCase() && a.time === time
+            );
+            
+            if (artilheiro) {
+                // Atualizar gols
+                artilheiro.gols += gols;
+            } else {
+                // Adicionar novo artilheiro
+                dadosCampeonato[categoria].artilheiros.push({
+                    id: Date.now().toString(),
+                    nome: nome,
+                    time: time,
+                    gols: gols
+                });
+            }
+            
+            salvarDados();
+            atualizarDados();
+            carregarArtilheirosExistentes();
+            
+            // Limpar campos
+            document.getElementById('nomeArtilheiro').value = '';
+            document.getElementById('golsArtilheiro').value = '1';
+            
+            alert('Gols registrados com sucesso!');
+        }
+
+        function carregarArtilheirosExistentes() {
+            const categoria = document.getElementById('categoriaArtilheiroExistente').value;
+            const tbody = document.querySelector('#tabelaArtilheirosExistentes tbody');
+            tbody.innerHTML = '';
+            
+            // Ordenar artilheiros pelo número de gols
+            const artilheiros = [...dadosCampeonato[categoria].artilheiros].sort((a, b) => b.gols - a.gols);
+            
+            artilheiros.forEach(artilheiro => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${artilheiro.nome}</td>
+                    <td>${artilheiro.time}</td>
+                    <td>${artilheiro.gols}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="abrirModalEditarArtilheiro('${categoria}', '${artilheiro.id}')">Editar</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function abrirModalEditarArtilheiro(categoria, artilheiroId) {
+            const artilheiro = dadosCampeonato[categoria].artilheiros.find(a => a.id === artilheiroId);
+            
+            if (artilheiro) {
+                document.getElementById('artilheiroId').value = artilheiroId;
+                document.getElementById('editNomeArtilheiro').value = artilheiro.nome;
+                document.getElementById('editGolsArtilheiro').value = artilheiro.gols;
+                
+                // Preencher select de times
+                const select = document.getElementById('editTimeArtilheiro');
+                select.innerHTML = '';
+                
+                let times = [];
+                if (categoria === 'juvenil') {
+                    times = dadosCampeonato.juvenil.times;
+                } else if (categoria === 'adulto') {
+                    times = [...dadosCampeonato.adulto.chaveA, ...dadosCampeonato.adulto.chaveB];
+                } else {
+                    times = [...dadosCampeonato.junior.chaveA, ...dadosCampeonato.junior.chaveB];
+                }
+                
+                times.forEach(time => {
+                    const option = document.createElement('option');
+                    option.value = time;
+                    option.textContent = time;
+                    option.selected = time === artilheiro.time;
+                    select.appendChild(option);
+                });
+                
+                // Abrir modal
+                document.getElementById('editarArtilheiroModal').style.display = 'block';
+            }
+        }
+
+        function salvarEdicaoArtilheiro() {
+            const categoria = document.getElementById('categoriaArtilheiroExistente').value;
+            const artilheiroId = document.getElementById('artilheiroId').value;
+            const nome = document.getElementById('editNomeArtilheiro').value.trim();
+            const time = document.getElementById('editTimeArtilheiro').value;
+            const gols = parseInt(document.getElementById('editGolsArtilheiro').value) || 0;
+            
+            if (!nome) {
+                alert('Por favor, informe o nome do jogador.');
+                return;
+            }
+            
+            const artilheiro = dadosCampeonato[categoria].artilheiros.find(a => a.id === artilheiroId);
+            
+            if (artilheiro) {
+                artilheiro.nome = nome;
+                artilheiro.time = time;
+                artilheiro.gols = gols;
+                
+                salvarDados();
+                atualizarDados();
+                carregarArtilheirosExistentes();
+                
+                fecharModalArtilheiro();
+                alert('Artilheiro atualizado com sucesso!');
+            }
+        }
+
+        function excluirArtilheiro() {
+            if (confirm('Tem certeza que deseja excluir este artilheiro?')) {
+                const categoria = document.getElementById('categoriaArtilheiroExistente').value;
+                const artilheiroId = document.getElementById('artilheiroId').value;
+                
+                dadosCampeonato[categoria].artilheiros = dadosCampeonato[categoria].artilheiros.filter(
+                    a => a.id !== artilheiroId
+                );
+                
+                salvarDados();
+                atualizarDados();
+                carregarArtilheirosExistentes();
+                
+                fecharModalArtilheiro();
+                alert('Artilheiro excluído com sucesso!');
+            }
+        }
+
+        function fecharModalArtilheiro() {
+            document.getElementById('editarArtilheiroModal').style.display = 'none';
+        }
+
+        // Funções para gerenciar ordem dos jogos
+        function carregarJogosParaOrdenacao() {
+            const categoria = document.getElementById('categoriaOrdem').value;
+            const fase = document.getElementById('faseOrdem').value;
+            
+            let jogos = [];
+            if (fase === 'fase1') {
+                jogos = dadosCampeonato[categoria].jogos;
+            } else if (fase === 'semifinal') {
+                jogos = dadosCampeonato[categoria].semifinais;
+            } else {
+                jogos = dadosCampeonato[categoria].final;
+            }
+            
+            const tbody = document.getElementById('corpoTabelaOrdemJogos');
+            tbody.innerHTML = '';
+            
+            jogos.forEach((jogo, index) => {
+                const row = document.createElement('tr');
+                row.setAttribute('data-id', jogo.id);
+                row.className = 'draggable';
+                row.draggable = true;
+                
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${jogo.timeCasa}</td>
+                    <td>vs</td>
+                    <td>${jogo.timeVisitante}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+            
+            // Adicionar eventos de drag and drop
+            configurarDragAndDrop();
+        }
+
+        function configurarDragAndDrop() {
+            const rows = document.querySelectorAll('#corpoTabelaOrdemJogos tr');
+            let draggedItem = null;
+            
+            rows.forEach(row => {
+                row.addEventListener('dragstart', function() {
+                    draggedItem = this;
+                    setTimeout(() => this.classList.add('highlight'), 0);
+                });
+                
+                row.addEventListener('dragend', function() {
+                    this.classList.remove('highlight');
+                    draggedItem = null;
+                });
+                
+                row.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                });
+                
+                row.addEventListener('dragenter', function(e) {
+                    e.preventDefault();
+                    if (this !== draggedItem) this.classList.add('highlight');
+                });
+                
+                row.addEventListener('dragleave', function() {
+                    if (this !== draggedItem) this.classList.remove('highlight');
+                });
+                
+                row.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    if (this !== draggedItem) {
+                        const tbody = document.getElementById('corpoTabelaOrdemJogos');
+                        const allRows = Array.from(tbody.querySelectorAll('tr'));
+                        const draggedIndex = allRows.indexOf(draggedItem);
+                        const targetIndex = allRows.indexOf(this);
+                        
+                        if (draggedIndex < targetIndex) {
+                            this.parentNode.insertBefore(draggedItem, this.nextSibling);
+                        } else {
+                            this.parentNode.insertBefore(draggedItem, this);
+                        }
+                        
+                        this.classList.remove('highlight');
+                        
+                        // Atualizar números de ordem
+                        atualizarNumerosOrdem();
+                    }
+                });
+            });
+        }
+
+        function atualizarNumerosOrdem() {
+            const rows = document.querySelectorAll('#corpoTabelaOrdemJogos tr');
+            rows.forEach((row, index) => {
+                row.querySelector('td:first-child').textContent = index + 1;
+            });
+        }
+
+        function salvarOrdemJogos() {
+            const categoria = document.getElementById('categoriaOrdem').value;
+            const fase = document.getElementById('faseOrdem').value;
+            
+            const rows = document.querySelectorAll('#corpoTabelaOrdemJogos tr');
+            const novaOrdem = Array.from(rows).map(row => row.getAttribute('data-id'));
+            
+            // Obter a ordem atual dos jogos
+            let jogosAtual;
+            if (fase === 'fase1') {
+                jogosAtual = dadosCampeonato[categoria].jogos;
+            } else if (fase === 'semifinal') {
+                jogosAtual = dadosCampeonato[categoria].semifinais;
+            } else {
+                jogosAtual = dadosCampeonato[categoria].final;
+            }
+            
+            // Criar nova array na ordem desejada
+            const novosJogos = novaOrdem.map(id => jogosAtual.find(jogo => jogo.id === id));
+            
+            // Atualizar a ordem no objeto de dados
+            if (fase === 'fase1') {
+                dadosCampeonato[categoria].jogos = novosJogos;
+            } else if (fase === 'semifinal') {
+                dadosCampeonato[categoria].semifinais = novosJogos;
+            } else {
+                dadosCampeonato[categoria].final = novosJogos;
+            }
+            
+            salvarDados();
+            atualizarDados();
+            
+            alert('Ordem dos jogos atualizada com sucesso!');
+        }
+
+        // Funções de navegação
+        function openCategory(event, categoryId) {
+            // Ocultar todos os conteúdos de tabs
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // Remover a classe active de todos os botões
+            const tabButtons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Mostrar o conteúdo da tab atual e marcar o botão como ativo
+            document.getElementById(categoryId).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+
+        function openAdminTab(event, tabId) {
+            // Ocultar todos os conteúdos de tabs administrativas
+            const tabContents = document.getElementsByClassName("admin-tab");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.add("hidden");
+            }
+            
+            // Remover a classe active de todos os botões
+            const tabButtons = document.querySelectorAll(".tab-button");
+            tabButtons.forEach(button => {
+                button.classList.remove("active");
+            });
+            
+            // Mostrar o conteúdo da tab atual e marcar o botão como ativo
+            document.getElementById(tabId).classList.remove("hidden");
+            event.currentTarget.classList.add("active");
+            
+            // Inicializar conteúdo específico para cada tab
+            if (tabId === 'gerenciarJogos') {
+                updateJogosSelect();
+            } else if (tabId === 'gerenciarArtilheiros') {
+                atualizarTimeArtilheiroOptions();
+                carregarArtilheirosExistentes();
+            } else if (tabId === 'gerenciarOrdem') {
+                carregarJogosParaOrdenacao();
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carregar dados salvos
+            carregarDados();
+            
+            // Atualizar interface
+            atualizarDados();
+            
+            // Event listeners para navegação
+            document.getElementById('adminBtn').addEventListener('click', function() {
+                document.getElementById('publicArea').classList.add('hidden');
+                document.getElementById('adminArea').classList.remove('hidden');
+            });
+            
+            document.getElementById('backToPublicBtn').addEventListener('click', function() {
+                document.getElementById('adminArea').classList.add('hidden');
+                document.getElementById('publicArea').classList.remove('hidden');
+            });
+            
+            // Login administrativo
+            document.getElementById('loginBtn').addEventListener('click', function() {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                if (username === 'tacapecicero' && password === 'taca1810') {
+                    document.getElementById('adminArea').classList.add('hidden');
+                    document.getElementById('adminPanel').classList.remove('hidden');
+                    
+                    // Inicializar primeira tab administrativa
+                    updateJogosSelect();
+                } else {
+                    document.getElementById('loginError').classList.remove('hidden');
+                }
+            });
+            
+            document.getElementById('logoutBtn').addEventListener('click', function() {
+                document.getElementById('adminPanel').classList.add('hidden');
+                document.getElementById('publicArea').classList.remove('hidden');
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+                document.getElementById('loginError').classList.add('hidden');
+            });
+            
+            // Event listeners para área administrativa
+            document.getElementById('jogoSelect').addEventListener('change', preencherInformacoesJogo);
+            document.getElementById('salvarResultadoBtn').addEventListener('click', salvarResultado);
+            document.getElementById('categoriaArtilheiro').addEventListener('change', atualizarTimeArtilheiroOptions);
+            document.getElementById('adicionarGolsBtn').addEventListener('click', adicionarGolsArtilheiro);
+            document.getElementById('salvarEdicaoArtilheiroBtn').addEventListener('click', salvarEdicaoArtilheiro);
+            document.getElementById('excluirArtilheiroBtn').addEventListener('click', excluirArtilheiro);
+            document.getElementById('salvarOrdemJogosBtn').addEventListener('click', salvarOrdemJogos);
+            
+            // Modal events
+            window.onclick = function(event) {
+                const modal = document.getElementById('editarArtilheiroModal');
+                if (event.target === modal) {
+                    fecharModalArtilheiro();
+                }
+            };
+            
+            // Inicializar campos
+            atualizarTimeArtilheiroOptions();
+        });
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDu%2Bo0iI%2BrfLBEoLkbEea6MoPb68qTfQIVGPycQqJ9R2c3beEmh2jKXEX6oXfZLBhc2a1RtHSrPLa3HxsVL91h4DqtqzeEVxTfIt92nKxLq5dZf5unvmcnDY7YorNrXjRtsvSI6Ts3T8ufkHIgqukKWpuahhtMFTTvvaxS93k89zMNmiQIlc5Sr4Rp3%2BR0jiZPpWt3OEpqulASRkI4D5VQwwemibYr4kt6p9VXbljFGgn%2BrKlkHbGmSSh5tp%2FNZVBJTQHpRQ86Vq2vbMTBQq%2BGOrPygqKnAOwP%2FexFaK%2FaPq1OU7VG3nL%2FFpa%2Fe0tyGTs843%2Fem4%2BgAnUzQERSsnMdY8z9yVzOIscJgZNLPBPhdb6ZcBycwuliNDPxihe5kW5dr81hBa2UQGkVcE0AwzPlEppGGzpDrDQNrT1up45VlilWjUvQMdf95c%2F3SnDC3lFhEqL7e40t%2F6vm19beTaYcqmWPNAgafu8pObvq%2B7cwipm82h4RPjsbaCWwBXb6LnVYg%3D%3D";
+        window.__genspark_locale = "pt-BR";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDu+o0iI+rfLBEoLkbEea6MoPb68qTfQIVGPycQqJ9R2c3beEmh2jKXEX6oXfZLBhc2a1RtHSrPLa3HxsVL91h4DqtqzeEVxTfIt92nKxLq5dZf5unvmcnDY7YorNrXjRtsvSI6Ts3T8ufkHIgqukKWpuahhtMFTTvvaxS93k89zMNmiQIlc5Sr4Rp3+R0jiZPpWt3OEpqulASRkI4D5VQwwemibYr4kt6p9VXbljFGgn+rKlkHbGmSSh5tp/NZVBJTQHpRQ86Vq2vbMTBQq+GOrPygqKnAOwP/exFaK/aPq1OU7VG3nL/Fpa/e0tyGTs843/em4+gAnUzQERSsnMdY8z9yVzOIscJgZNLPBPhdb6ZcBycwuliNDPxihe5kW5dr81hBa2UQGkVcE0AwzPlEppGGzpDrDQNrT1up45VlilWjUvQMdf95c/3SnDC3lFhEqL7e40t/6vm19beTaYcqmWPNAgafu8pObvq+7cwipm82h4RPjsbaCWwBXb6LnVYg==";
+    </script>
+    
+        <script id="html_badge_script2" src="https://www.genspark.ai/html_badge.js"></script>
+        
