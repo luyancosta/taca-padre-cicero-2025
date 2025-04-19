@@ -757,68 +757,75 @@
     </div>
 
     <script>
-        // Dados iniciais do campeonato
-        const dadosCampeonato = {
-            juvenil: {
-                times: [
-                    "NATAL-RN",
-                    "EDUARDO COELHO-PE",
-                    "HCK-CE",
-                    "MIRAIMA-CE",
-                    "SALGUEIRO-PE"
-                ],
-                jogos: [],
-                artilheiros: []
-            },
-            adulto: {
-                chaveA: [
-                    "HANDEBOL JUAZEIRO-CE",
-                    "PETROLINA-PE",
-                    "CRAJUBAR-CE"
-                ],
-                chaveB: [
-                    "EXU-PE",
-                    "EDUARDO COELHO-PE",
-                    "JUÁ ATLÉTICO HANDEBOL-CE"
-                ],
-                jogos: [],
-                semifinais: [],
-                final: [],
-                artilheiros: []
-            },
-            junior: {
-                chaveA: [
-                    "MIRAIMA-CE",
-                    "SALGUEIRO-PE",
-                    "BARBALHA-CE"
-                ],
-                chaveB: [
-                    "HANDEBOL JUAZEIRO-CE",
-                    "HCK-CE",
-                    "EDUARDO COELHO-PE"
-                ],
-                jogos: [],
-                semifinais: [],
-                final: [],
-                artilheiros: []
-            }
-        };
-
-        // Funções para manipulação de localStorage
-        function salvarDados() {
-            localStorage.setItem('dadosCampeonato', JSON.stringify(dadosCampeonato));
+    const dadosCampeonato = {
+        juvenil: {
+            times: [
+                "EDUARDO COELHO/PE",
+                "NATAL/RN",
+                "SALGUEIRO/PE",
+                "HCK/CE"
+            ],
+            jogos: [
+                { id: "juvenil_01", timeCasa: "EDUARDO COELHO/PE", timeVisitante: "NATAL/RN", data: "19/04/2025 09:30:00", observacoes: "" },
+                { id: "juvenil_02", timeCasa: "SALGUEIRO/PE", timeVisitante: "HCK/CE", data: "20/04/2025 17:50:00", observacoes: "" },
+                { id: "juvenil_03", timeCasa: "EDUARDO COELHO/PE", timeVisitante: "SALGUEIRO/PE", data: "19/04/2025 13:15:00", observacoes: "" },
+                { id: "juvenil_final", timeCasa: "OS DOIS MELHORES COLOCADOS DA FASE DE GRUPOS", timeVisitante: "", data: "20/04/2025 14:00:00", observacoes: "Final Juvenil" }
+            ]
+        },
+        adulto: {
+            chaveA: [
+                "HANDEBOL JUAZEIRO/CE",
+                "PETROLINA/PE",
+                "CRAJUBAR/CE"
+            ],
+            chaveB: [
+                "EXU/PE",
+                "EDUARDO COELHO/PE",
+                "JUÁ ATLÉTICO HANDEBOL/CE"
+            ],
+            jogos: [
+                { id: "adulto_01", timeCasa: "HANDEBOL JUAZEIRO/CE", timeVisitante: "HCK/CE", data: "19/04/2025 15:35:00", observacoes: "" },
+                { id: "adulto_02", timeCasa: "PETROLINA/PE", timeVisitante: "CRAJUBAR/CE", data: "19/04/2025 17:05:00", observacoes: "" },
+                { id: "adulto_03", timeCasa: "HANDEBOL JUAZEIRO/CE", timeVisitante: "PETROLINA/PE", data: "19/04/2025 19:20:00", observacoes: "" },
+                { id: "adulto_final", timeCasa: "Vencedor Semifinal 1", timeVisitante: "Vencedor Semifinal 2", data: "20/04/2025 16:30:00", observacoes: "Final Adulto" }
+            ]
+        },
+        junior: {
+            chaveA: [
+                "MIRAIMA/CE",
+                "SALGUEIRO/PE",
+                "BARBALHA/CE"
+            ],
+            chaveB: [
+                "HANDEBOL JUAZEIRO/CE",
+                "HCK/CE",
+                "EDUARDO COELHO/PE"
+            ],
+            jogos: [
+                { id: "junior_01", timeCasa: "SALGUEIRO/PE", timeVisitante: "BARBALHA/CE", data: "19/04/2025 10:15:00", observacoes: "" },
+                { id: "junior_02", timeCasa: "HANDEBOL JUAZEIRO/CE", timeVisitante: "EDUARDO COELHO/PE", data: "19/04/2025 12:30:00", observacoes: "" },
+                { id: "junior_03", timeCasa: "HCK/CE", timeVisitante: "EDUARDO COELHO/PE", data: "19/04/2025 20:05:00", observacoes: "" },
+                { id: "junior_final", timeCasa: "Vencedor Semifinal 1", timeVisitante: "Vencedor Semifinal 2", data: "20/04/2025 16:00:00", observacoes: "Final Junior" }
+            ]
         }
+    };
 
-        function carregarDados() {
-            const dados = localStorage.getItem('dadosCampeonato');
-            if (dados) {
-                const dadosParseados = JSON.parse(dados);
-                Object.assign(dadosCampeonato, dadosParseados);
-            } else {
-                // Se não houver dados salvos, criar jogos iniciais
-                inicializarJogos();
-            }
+    function salvarDados() {
+        localStorage.setItem('dadosCampeonato', JSON.stringify(dadosCampeonato));
+    }
+
+    function carregarDados() {
+        const dados = localStorage.getItem('dadosCampeonato');
+        if (dados) {
+            const dadosParseados = JSON.parse(dados);
+            Object.assign(dadosCampeonato, dadosParseados);
+        } else {
+            inicializarJogos();
         }
+    }
+
+    salvarDados();
+</script>
 
         // Inicialização de jogos
         function inicializarJogos() {
