@@ -4,7 +4,69 @@
     <meta charset="utf-8" />
     <title>Admin</title>
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+
+    <body>
+  <h2>Área Administrativa</h2>
+
+  <div id="login">
+    <input type="email" id="email" placeholder="E-mail">
+    <input type="password" id="senha" placeholder="Senha">
+    <button onclick="login()">Entrar</button>
+  </div>
+
+  <div id="editor" style="display: none;">
+    <textarea id="texto" cols="50" rows="10"></textarea><br>
+    <button onclick="salvar()">Salvar</button>
+  </div>
+
+  <script>
+    function login() {
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+
+      auth.signInWithEmailAndPassword(email, senha)
+        .then(() => {
+          document.getElementById("login").style.display = "none";
+          document.getElementById("editor").style.display = "block";
+
+          // Carrega texto salvo
+          db.collection("conteudo").doc("principal").get().then(doc => {
+            if (doc.exists) {
+              document.getElementById("texto").value = doc.data().texto;
+            }
+          });
+        })
+        .catch(error => {
+          alert("Erro ao logar: " + error.message);
+        });
+    }
+
+    function salvar() {
+      const texto = document.getElementById("texto").value;
+      db.collection("conteudo").doc("principal").set({ texto })
+        .then(() => alert("Salvo com sucesso!"));
+    }
+  </script>
+</body>
+
   </head>
   <body>
+    // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyASgV8N3ukY96euxH-Sj7CLYhDxbZsbdt0",
+  authDomain: "taca-padre-cicero.firebaseapp.com",
+  projectId: "taca-padre-cicero",
+  storageBucket: "taca-padre-cicero.firebasestorage.app",
+  messagingSenderId: "205530596209",
+  appId: "1:205530596209:web:fa15a1a35968ddcc9a6cd0"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
   </body>
 </html>
