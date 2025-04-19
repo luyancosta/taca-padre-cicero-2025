@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -207,7 +208,7 @@
             flex: 1;
             min-width: 300px;
         }
-        @media print {
+         {
             body {
                 background-color: white;
             }
@@ -820,61 +821,167 @@
             }
         }
 
-        // Inicialização de jogos
+        // Inicialização de jogos com os horários específicos
         function inicializarJogos() {
-            // Juvenil (todos contra todos)
-            const timesJuvenil = dadosCampeonato.juvenil.times;
-            for (let i = 0; i < timesJuvenil.length; i++) {
-                for (let j = i + 1; j < timesJuvenil.length; j++) {
-                    dadosCampeonato.juvenil.jogos.push({
-                        id: `juvenil_${i}_${j}`,
-                        timeCasa: timesJuvenil[i],
-                        timeVisitante: timesJuvenil[j],
-                        golsCasa: null,
-                        golsVisitante: null,
-                        data: "",
-                        observacoes: ""
-                    });
+            // Juvenil
+            dadosCampeonato.juvenil.jogos = [
+                {
+                    id: "juvenil_1",
+                    timeCasa: "EDUARDO COELHO-PE",
+                    timeVisitante: "NATAL-RN",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "19/04/2025 09:30",
+                    observacoes: "Jogo 1"
+                },
+                {
+                    id: "juvenil_2",
+                    timeCasa: "NATAL-RN",
+                    timeVisitante: "HCK-CE",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "19/04/2025 11:45",
+                    observacoes: "Jogo 5"
+                },
+                {
+                    id: "juvenil_3",
+                    timeCasa: "EDUARDO COELHO-PE",
+                    timeVisitante: "SALGUEIRO-PE",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "19/04/2025 13:15",
+                    observacoes: "Jogo 6"
+                },
+                {
+                    id: "juvenil_4",
+                    timeCasa: "HCK-CE",
+                    timeVisitante: "SALGUEIRO-PE",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "20/04/2025 17:50",
+                    observacoes: "Jogo 11"
+                },
+                {
+                    id: "juvenil_5",
+                    timeCasa: "EDUARDO COELHO-PE",
+                    timeVisitante: "HCK-CE",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "20/04/2025 10:45",
+                    observacoes: "Jogo 18"
+                },
+                // Outros jogos juvenil podem ser adicionados aqui
+            ];
+
+            // Adulto
+            dadosCampeonato.adulto.jogos = [
+                {
+                    id: "adulto_1",
+                    chave: "B",
+                    timeCasa: "EXU-PE",
+                    timeVisitante: "JUÁ ATLÉTICO HANDEBOL-CE",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "19/04/2025 11:00",
+                    observacoes: "Jogo 3"
+                },
+                {
+                    id: "adulto_2",
+                    chave: "A",
+                    timeCasa: "HANDEBOL JUAZEIRO-CE",
+                    timeVisitante: "CRAJUBAR-CE",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "19/04/2025 14:00",
+                    observacoes: "Jogo 7"
+                },
+                {
+                    id: "adulto_3",
+                    chave: "B",
+                    timeCasa: "EDUARDO COELHO-PE",
+                    timeVisitante: "JUÁ ATLÉTICO HANDEBOL-CE",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "19/04/2025 16:20",
+                    observacoes: "Jogo 9"
+                },
+                {
+                    id: "adulto_4",
+                    chave: "A",
+                    timeCasa: "PETROLINA-PE",
+                    timeVisitante: "CRAJUBAR-CE",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "19/04/2025 17:05",
+                    observacoes: "Jogo 10"
+                },
+                {
+                    id: "adulto_5",
+                    chave: "B",
+                    timeCasa: "EXU-PE",
+                    timeVisitante: "EDUARDO COELHO-PE",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "19/04/2025 18:35",
+                    observacoes: "Jogo 12"
+                },
+                {
+                    id: "adulto_6",
+                    chave: "A",
+                    timeCasa: "HANDEBOL JUAZEIRO-CE",
+                    timeVisitante: "PETROLINA-PE",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "19/04/2025 19:20",
+                    observacoes: "Jogo 13"
                 }
-            }
+            ];
 
-            // Adulto (fase de grupos)
-            const timesAdultoA = dadosCampeonato.adulto.chaveA;
-            const timesAdultoB = dadosCampeonato.adulto.chaveB;
-
-            // Jogos da chave A
-            for (let i = 0; i < timesAdultoA.length; i++) {
-                for (let j = i + 1; j < timesAdultoA.length; j++) {
-                    dadosCampeonato.adulto.jogos.push({
-                        id: `adultoA_${i}_${j}`,
-                        chave: "A",
-                        timeCasa: timesAdultoA[i],
-                        timeVisitante: timesAdultoA[j],
-                        golsCasa: null,
-                        golsVisitante: null,
-                        data: "",
-                        observacoes: ""
-                    });
+            // Junior
+            dadosCampeonato.junior.jogos = [
+                {
+                    id: "junior_1",
+                    chave: "A",
+                    timeCasa: "SALGUEIRO-PE",
+                    timeVisitante: "BARBALHA-CE",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "19/04/2025 10:15",
+                    observacoes: "Jogo 2"
+                },
+                {
+                    id: "junior_2",
+                    chave: "B",
+                    timeCasa: "HANDEBOL JUAZEIRO-CE",
+                    timeVisitante: "EDUARDO COELHO-PE",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "19/04/2025 12:30",
+                    observacoes: "Jogo 4"
+                },
+                {
+                    id: "junior_3",
+                    chave: "B",
+                    timeCasa: "HANDEBOL JUAZEIRO-CE",
+                    timeVisitante: "HCK-CE",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "19/04/2025 15:35",
+                    observacoes: "Jogo 8"
+                },
+                {
+                    id: "junior_4",
+                    chave: "B",
+                    timeCasa: "HCK-CE",
+                    timeVisitante: "EDUARDO COELHO-PE",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "19/04/2025 20:05",
+                    observacoes: "Jogo 14"
                 }
-            }
+            ];
 
-            // Jogos da chave B
-            for (let i = 0; i < timesAdultoB.length; i++) {
-                for (let j = i + 1; j < timesAdultoB.length; j++) {
-                    dadosCampeonato.adulto.jogos.push({
-                        id: `adultoB_${i}_${j}`,
-                        chave: "B",
-                        timeCasa: timesAdultoB[i],
-                        timeVisitante: timesAdultoB[j],
-                        golsCasa: null,
-                        golsVisitante: null,
-                        data: "",
-                        observacoes: ""
-                    });
-                }
-            }
-
-            // Criar semifinais
+            // Semifinais Adulto
             dadosCampeonato.adulto.semifinais = [
                 {
                     id: "semifinal_adulto_1",
@@ -882,8 +989,8 @@
                     timeVisitante: "2º Colocado Chave B",
                     golsCasa: null,
                     golsVisitante: null,
-                    data: "",
-                    observacoes: ""
+                    data: "20/04/2025 10:00",
+                    observacoes: "Jogo 17 - Semifinal 1"
                 },
                 {
                     id: "semifinal_adulto_2",
@@ -891,61 +998,12 @@
                     timeVisitante: "2º Colocado Chave A",
                     golsCasa: null,
                     golsVisitante: null,
-                    data: "",
-                    observacoes: ""
+                    data: "20/04/2025 13:30",
+                    observacoes: "Jogo 21 - Semifinal 2"
                 }
             ];
 
-            // Criar final
-            dadosCampeonato.adulto.final = [
-                {
-                    id: "final_adulto",
-                    timeCasa: "Vencedor Semifinal 1",
-                    timeVisitante: "Vencedor Semifinal 2",
-                    golsCasa: null,
-                    golsVisitante: null,
-                    data: "",
-                    observacoes: ""
-                }
-            ];
-
-            // Junior (fase de grupos)
-            const timesJuniorA = dadosCampeonato.junior.chaveA;
-            const timesJuniorB = dadosCampeonato.junior.chaveB;
-
-            // Jogos da chave A
-            for (let i = 0; i < timesJuniorA.length; i++) {
-                for (let j = i + 1; j < timesJuniorA.length; j++) {
-                    dadosCampeonato.junior.jogos.push({
-                        id: `juniorA_${i}_${j}`,
-                        chave: "A",
-                        timeCasa: timesJuniorA[i],
-                        timeVisitante: timesJuniorA[j],
-                        golsCasa: null,
-                        golsVisitante: null,
-                        data: "",
-                        observacoes: ""
-                    });
-                }
-            }
-
-            // Jogos da chave B
-            for (let i = 0; i < timesJuniorB.length; i++) {
-                for (let j = i + 1; j < timesJuniorB.length; j++) {
-                    dadosCampeonato.junior.jogos.push({
-                        id: `juniorB_${i}_${j}`,
-                        chave: "B",
-                        timeCasa: timesJuniorB[i],
-                        timeVisitante: timesJuniorB[j],
-                        golsCasa: null,
-                        golsVisitante: null,
-                        data: "",
-                        observacoes: ""
-                    });
-                }
-            }
-
-            // Criar semifinais
+            // Semifinais Junior
             dadosCampeonato.junior.semifinais = [
                 {
                     id: "semifinal_junior_1",
@@ -953,8 +1011,8 @@
                     timeVisitante: "2º Colocado Chave B",
                     golsCasa: null,
                     golsVisitante: null,
-                    data: "",
-                    observacoes: ""
+                    data: "20/04/2025 09:15",
+                    observacoes: "Jogo 16 - Semifinal 1"
                 },
                 {
                     id: "semifinal_junior_2",
@@ -962,12 +1020,25 @@
                     timeVisitante: "2º Colocado Chave A",
                     golsCasa: null,
                     golsVisitante: null,
-                    data: "",
-                    observacoes: ""
+                    data: "20/04/2025 12:45",
+                    observacoes: "Jogo 20 - Semifinal 2"
                 }
             ];
 
-            // Criar final
+            // Final Adulto
+            dadosCampeonato.adulto.final = [
+                {
+                    id: "final_adulto",
+                    timeCasa: "Vencedor Semifinal 1",
+                    timeVisitante: "Vencedor Semifinal 2",
+                    golsCasa: null,
+                    golsVisitante: null,
+                    data: "20/04/2025 16:30",
+                    observacoes: "Jogo 25 - Final"
+                }
+            ];
+
+            // Final Junior
             dadosCampeonato.junior.final = [
                 {
                     id: "final_junior",
@@ -975,8 +1046,8 @@
                     timeVisitante: "Vencedor Semifinal 2",
                     golsCasa: null,
                     golsVisitante: null,
-                    data: "",
-                    observacoes: ""
+                    data: "20/04/2025 15:45",
+                    observacoes: "Jogo 24 - Final"
                 }
             ];
 
@@ -1858,3 +1929,12 @@
     </script>
 </body>
 </html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDurEWoG%2BRodeAQGpW8D4M3XcTPinWA3R0jrV%2B6GYXd4wiQDihlWLiPHGPjwkp4Z1nv2lezCSfIX4Yq6Jc2612wjzykGkH3XjkI25FeC5o5zw3hzvPEz4UXqEht7UHQHx7azYtgtJ97byXzfiKSZ%2Bf8uGSIo6gUwRxmPEU3J4VYBKHtdMQRw%2FxYzbjzlaMwqiu64hzJXd22UBLA1aAMZ46dynF5RE33Hnrd9gnPGyUX4g%2Bh0E2Vfk08GAnmbsO1hJPZFMWQ6xl2sgc5ozn357hFuf7aRM7T5jZw57REaW6EcVeQP1EnhGPiH6KpMtKqyGEqiypIcg16ZtzAVr2UgPmtfjmOvydanTPx0c6aWhTk3Q2RFfv%2BcbKaogcK%2B3KNDv72DzHINJah3qzAv%2FrD3xp5aQTdppS7hzO37svyY%2BTmXJioVGruhVTGyJfUBQDT9fVOcgAVEl2bhs088S4oSDJtEs1SHR3%2BC%2FkklmyuY2YC3IrpVDDKTAI4vBoIZclvf1Gg%3D%3D";
+        window.__genspark_locale = "pt-BR";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDurEWoG+RodeAQGpW8D4M3XcTPinWA3R0jrV+6GYXd4wiQDihlWLiPHGPjwkp4Z1nv2lezCSfIX4Yq6Jc2612wjzykGkH3XjkI25FeC5o5zw3hzvPEz4UXqEht7UHQHx7azYtgtJ97byXzfiKSZ+f8uGSIo6gUwRxmPEU3J4VYBKHtdMQRw/xYzbjzlaMwqiu64hzJXd22UBLA1aAMZ46dynF5RE33Hnrd9gnPGyUX4g+h0E2Vfk08GAnmbsO1hJPZFMWQ6xl2sgc5ozn357hFuf7aRM7T5jZw57REaW6EcVeQP1EnhGPiH6KpMtKqyGEqiypIcg16ZtzAVr2UgPmtfjmOvydanTPx0c6aWhTk3Q2RFfv+cbKaogcK+3KNDv72DzHINJah3qzAv/rD3xp5aQTdppS7hzO37svyY+TmXJioVGruhVTGyJfUBQDT9fVOcgAVEl2bhs088S4oSDJtEs1SHR3+C/kklmyuY2YC3IrpVDDKTAI4vBoIZclvf1Gg==";
+    </script>
+    
+        <script id="html_badge_script2" src="https://www.genspark.ai/html_badge.js"></script>
+        
